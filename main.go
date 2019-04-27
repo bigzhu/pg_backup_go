@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 
@@ -27,27 +28,31 @@ func main() {
 		return
 	}
 	dbConf := confbz.GetDBConf()
-	fmt.Println(dbConf)
-	password := fmt.Sprintf(`export PGPASSWORD="%s";`, dbConf.Password)
+	password := fmt.Sprintf("PGPASSWORD=%s", dbConf.Password)
 	host := fmt.Sprintf("--host=%s", dbConf.Host)
 	port := fmt.Sprintf("--port=%s", dbConf.Port)
-	user := fmt.Sprintf("--username=%s", dbConf.User)
+	user := fmt.Sprintf(`--username=%s`, dbConf.User)
 	params := "--format=c"
 	file := fmt.Sprintf("--file=%s", "test.dump")
 
-	dbName := fmt.Sprintf("-U %s", dbConf.DBName)
-	cmd := exec.Command(tool, host, port, user, params, file, dbName)
+	cmd := exec.Command(tool, host, port, user, params, "-v", file, dbConf.DBName)
+	//cmd := exec.Command("pg_dump -h 123.176.102.187 -p 5432 -U learn_ngsl -Fc -f learn_ngsl.dump learn_ngsl")
 	cmd.Env = append(os.Environ(),
 		password,
 	)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	err = cmd.Run()
-
+	err = cmd.Start()
 	if err != nil {
-		// log.Fatal(err)
+		log.Fatal(err)
 	}
-	outStr, errStr := string(stdout.Bytes()), string(stderr.Bytes())
-	fmt.Printf("out:\n%s\nerr:\n%s\n", outStr, errStr)
+	log.Printf("Starting dump DB from remote server...")
+	err = cmd.Wait()
+	if err != nil {
+		log.Fatal(err)
+	}
+	outStr := string(stdout.Bytes())
+	fmt.Println(outStr)
+	log.Printf("DB dum is Done!")
 }
