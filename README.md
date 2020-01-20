@@ -4,7 +4,7 @@ used to backup remote postgresql DB to local
 ## install
 
 ```
-go get github.com/bigzhu/backup_pg_go
+go get github.com/bigzhu/pg_backup_go
 ```
 
 ## Create db config file
@@ -26,4 +26,3 @@ backup_pg_go
 ```
 
 in the db.toml file path
-
