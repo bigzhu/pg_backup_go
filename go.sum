@@ -5,6 +5,8 @@ github.com/bigzhu/gobz v0.0.0-20190317152122-fc4f6be7207b h1:+7Sljm1//IQVNWgdT6Y
 github.com/bigzhu/gobz v0.0.0-20190317152122-fc4f6be7207b/go.mod h1:3JwNMtae1fDioQIkeuowwRHSZVxTfGdMeuft7SMaoho=
 github.com/bigzhu/gobz v0.0.0-20190427035733-16e303e85415 h1:zbZHYCYkoSFOYz08KEZSnP7uZpxmyOrqbrWghped5v0=
 github.com/bigzhu/gobz v0.0.0-20190427035733-16e303e85415/go.mod h1:3JwNMtae1fDioQIkeuowwRHSZVxTfGdMeuft7SMaoho=
+github.com/bigzhu/gobz v0.0.0-20190428073756-b21d45c9074b h1:4HbyeuDKHH84bSWrIkxizD13sk52ZRfPd8DS4sdDVMg=
+github.com/bigzhu/gobz v0.0.0-20190428073756-b21d45c9074b/go.mod h1:3JwNMtae1fDioQIkeuowwRHSZVxTfGdMeuft7SMaoho=
 github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff/go.mod h1:+RTT1BOk5P97fT2CiHkbFQwkK3mjsFAP6zCYV2aXtjw=
 github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7/go.mod h1:VJ0WA2NBN22VlZ2dKZQPAPnyWw5XTlK1KymzLKsr59s=
 github.com/gin-gonic/contrib v0.0.0-20181101072842-54170a7b0b4b/go.mod h1:iqneQ2Df3omzIVTkIfn7c1acsVnMGiSLn4XF5Blh3Yg=

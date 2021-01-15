@@ -22,6 +22,9 @@ func checkExists() error {
 }
 func prepareCMD() (cmd *exec.Cmd, err error) {
 	dbConf := confbz.GetDBConf()
+	if dbConf.Port == "" {
+		dbConf.Port = "5432"
+	}
 	password := fmt.Sprintf("PGPASSWORD=%s", dbConf.Password)
 	host := fmt.Sprintf("--host=%s", dbConf.Host)
 	port := fmt.Sprintf("--port=%s", dbConf.Port)
