@@ -22,7 +22,7 @@ password = "bigzhu"
 run
 
 ```bash
-backup_pg_go
+pg_backup_go
 ```
 
 in the db.toml file path
