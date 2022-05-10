@@ -1,6 +1,7 @@
 package logic
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -42,9 +43,9 @@ func prepareCMD() (cmd *exec.Cmd, err error) {
 	cmd.Env = append(os.Environ(),
 		password,
 	)
-	//var stdout, stderr bytes.Buffer
-	//cmd.Stdout = &stdout
-	//cmd.Stderr = &stderr
+	var stdout, stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
 	err = cmd.Start()
 
 	return
@@ -65,8 +66,8 @@ func Dump() (err error) {
 	if err != nil {
 		return
 	}
-	// outStr := string(stdout.Bytes())
-	// fmt.Println(outStr)
+	outStr := string(stdout.Bytes())
+	fmt.Println(outStr)
 	log.Printf("DB dum is Done!")
 	return
 }
