@@ -43,18 +43,11 @@ func prepareCMD() (cmd *exec.Cmd, err error) {
 		password,
 	)
 
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		return
-	}
+	//err = cmd.Start()
 
-	err = cmd.Start()
+	out, err := cmd.Output()
 
-	for {
-		tmp := make([]byte, 1024)
-		_, err = stdout.Read(tmp)
-		fmt.Print(string(tmp))
-	}
+	fmt.Printf("result %s\n", out)
 
 	return
 }
